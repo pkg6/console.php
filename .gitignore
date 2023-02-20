@@ -1,3 +1,5 @@
-/vendor/
-/.idea
+app
+vendor
+.idea
+consoles
 composer.lock

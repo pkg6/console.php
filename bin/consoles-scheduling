@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+
+<?php
+
+use Pkg6\Console\Scheduling\ScheduleConsole;
+
+$file = null;
+
+$autoloadFile = [
+    __DIR__ . '/../../../autoload.php',
+    __DIR__ . '/../../vendor/autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . 'vendor/autoload.php',
+];
+foreach ($autoloadFile as $file) {
+    if (file_exists($file)) {
+        require $file;
+        break;
+    }
+}
+if (!file_exists($file)) {
+    die("include composer autoload.php fail\n");
+}
+const BASE_PATH = __DIR__;
+
+$console          = new ScheduleConsole();
+$wangConsoleClass = [
+    \App\ConsoleScheduling::class,
+];
+foreach ($wangConsoleClass as $app) {
+    if (is_subclass_of($app, ScheduleConsole::class)) {
+        $console = new $app;
+        break;
+    }
+}
+$console->handle();

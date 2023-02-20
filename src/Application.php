@@ -96,7 +96,7 @@ class Application extends SymfonyApplication
     public static function formatCommandString(string $string, string $consoleName = '')
     {
         if ($consoleName == '') {
-            $consoleName = defined('CONSOLE_NAME') ? CONSOLE_NAME : 'openphp';
+            $consoleName = defined('CONSOLE_NAME') ? CONSOLE_NAME : 'consoles';
         }
         return sprintf('%s %s %s',
             static::phpBinary(),
