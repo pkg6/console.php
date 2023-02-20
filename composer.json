@@ -1,0 +1,32 @@
+{
+  "name": "pkg6/console",
+  "type": "library",
+  "license": "Apache-2.0",
+  "description": "A PHP console application",
+  "authors": [
+    {
+      "name": "zhiqiangwang",
+      "email": "zhiqiangwang@aliyun.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "ext-json": "*",
+    "symfony/console": "^5.4",
+    "symfony/process": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pkg6\\Console\\": "src/"
+    }
+  },
+  "require-dev": {
+    "swoole/ide-helper": "^4.5"
+  },
+  "scripts": {
+    "fresh": [
+      "rm -rf vendor composer.lock",
+      "composer update"
+    ]
+  }
+}
