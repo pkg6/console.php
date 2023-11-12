@@ -10,11 +10,12 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.4",
     "ext-json": "*",
     "symfony/console": "^5.4",
     "symfony/process": "^5.4",
-    "dragonmantank/cron-expression": "^3.3"
+    "dragonmantank/cron-expression": "^3.3",
+    "pkg6/var-dumper": "^0.1"
   },
   "autoload": {
     "psr-4": {

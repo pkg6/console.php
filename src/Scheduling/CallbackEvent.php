@@ -5,6 +5,9 @@ namespace Pkg6\Console\Scheduling;
 
 
 
+use Pkg6\VarDumper\Tests\VarDumperTest;
+use Pkg6\VarDumper\VarDumper;
+
 class CallbackEvent extends Event
 {
     /**
@@ -47,6 +50,6 @@ class CallbackEvent extends Event
         if (is_string($this->description)) {
             return $this->description;
         }
-        return 'callback ' . spl_object_id($this->callback) . serialize($this->parameters);
+        return VarDumper::create($this->callback)->asString();
     }
 }

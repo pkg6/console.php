@@ -24,10 +24,10 @@ if (!file_exists($file)) {
 const BASE_PATH = __DIR__;
 
 $console          = new ScheduleConsole();
-$wangConsoleClass = [
+$appConsoleClass = [
     \App\ConsoleScheduling::class,
 ];
-foreach ($wangConsoleClass as $app) {
+foreach ($appConsoleClass as $app) {
     if (is_subclass_of($app, ScheduleConsole::class)) {
         $console = new $app;
         break;
