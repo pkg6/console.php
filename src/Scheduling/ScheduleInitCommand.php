@@ -19,7 +19,7 @@ class ScheduleInitCommand extends Command
     protected $description = 'schedule project init';
 
     /**
-     * @return void
+     * @return int
      */
     public function handle()
     {
@@ -29,6 +29,7 @@ class ScheduleInitCommand extends Command
         $this->initfile();
         @exec('composer dump-autoload');
         $this->info('init success');
+        return self::SUCCESS;
     }
 
     /**

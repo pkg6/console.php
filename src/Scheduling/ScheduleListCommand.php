@@ -18,7 +18,7 @@ class ScheduleListCommand extends Command
     protected $description = 'List the scheduled commands';
 
     /**
-     * @return void
+     * @return int
      * @throws \Exception
      */
     public function handle()
@@ -39,5 +39,6 @@ class ScheduleListCommand extends Command
             'Description',
             'NextDue',
         ], $rows ?? []);
+        return self::SUCCESS;
     }
 }

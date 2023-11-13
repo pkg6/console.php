@@ -38,7 +38,6 @@ class ScheduleRunCommand extends Command
      */
     public function handle()
     {
-
         $this->schedule = ScheduleConsole::$schedule;
         $pool           = $this->option('pool');
         if ($pool) {

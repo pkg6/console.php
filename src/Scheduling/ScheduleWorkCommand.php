@@ -4,7 +4,6 @@
 namespace Pkg6\Console\Scheduling;
 
 
-
 use DateTime;
 use Pkg6\Console\Application;
 use Pkg6\Console\Command;
@@ -23,7 +22,7 @@ class ScheduleWorkCommand extends Command
 
 
     /**
-     * @return mixed
+     * @return int
      * @throws \Exception
      */
     public function handle()
