@@ -1,3 +1,7 @@
+# About this project
+
+You can understand that this is a package, and you can also understand that this is a project
+
 # Install
 
 ```
@@ -18,7 +22,7 @@ composer require pkg6/console
 >
 > 1.x.x 包含所有分支内容
 
-## Development Process
+# Development Process
 
 If you modify the console, first modify the basic branch content, and then merge it into each branch to publish the version
 
