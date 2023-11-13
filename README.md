@@ -1,8 +1,8 @@
-# Install 
+# Install
 
-~~~
+```
 composer require pkg6/console
-~~~
+```
 
 # example
 
