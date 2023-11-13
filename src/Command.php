@@ -97,7 +97,7 @@ abstract class Command extends SymfonyCommand
     /**
      * @return string
      */
-    public function getName()
+    public function getName():string
     {
         return $this->name;
     }
@@ -113,7 +113,7 @@ abstract class Command extends SymfonyCommand
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription() :string
     {
         return $this->description;
     }
@@ -121,7 +121,7 @@ abstract class Command extends SymfonyCommand
     /**
      * @return string
      */
-    public function getHelp()
+    public function getHelp():string
     {
         return $this->help;
     }
@@ -133,7 +133,7 @@ abstract class Command extends SymfonyCommand
      * @throws \Exception
      * @throws ExceptionInterface
      */
-    public function run(InputInterface $input, OutputInterface $output)
+    public function run(InputInterface $input, OutputInterface $output): int
     {
         $this->output = new SymfonyStyle($input, $output);
         return parent::run($this->input = $input, $this->output);

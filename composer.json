@@ -10,10 +10,10 @@
     }
   ],
   "require": {
-    "php": ">=7.4",
+    "php": ">=7.2",
     "ext-json": "*",
-    "symfony/console": "^5.4",
-    "symfony/process": "^5.4",
+    "symfony/console": "^5.4|^6.0",
+    "symfony/process": "^5.4|^6.0",
     "dragonmantank/cron-expression": "^3.3",
     "pkg6/var-dumper": "^0.1"
   },

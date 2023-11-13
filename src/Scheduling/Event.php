@@ -345,7 +345,7 @@ class Event
      */
     public function process()
     {
-        $this->process = ProcessUtils::newProcess($this->command, (defined('BASE_PATH') ? BASE_PATH : getcwd()));
+        $this->process = ProcessUtils::newProcess($this->buildCommand(), (defined('BASE_PATH') ? BASE_PATH : getcwd()));
         return $this->process;
     }
 

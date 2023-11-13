@@ -4,7 +4,6 @@
 namespace Pkg6\Console;
 
 
-
 use Closure;
 use Exception;
 use RuntimeException;
@@ -37,7 +36,7 @@ class Application extends SymfonyApplication
      */
     public function __construct($version = '1.0')
     {
-        parent::__construct('consoles Cli', $version);
+        parent::__construct('Console Cli', $version);
         $this->setAutoExit(false);
         $this->setCatchExceptions(false);
         $this->bootstrap();
@@ -72,11 +71,10 @@ class Application extends SymfonyApplication
      * @return int
      * @throws Exception
      */
-    public function run(InputInterface $input = null, OutputInterface $output = null)
+    public function run(InputInterface $input = null, OutputInterface $output = null): int
     {
         return parent::run($input, $output);
     }
-
 
     /**
      * Determine the proper PHP executable.
@@ -116,7 +114,7 @@ class Application extends SymfonyApplication
     {
         if (is_subclass_of($command, SymfonyCommand::class)) {
             $callingClass = true;
-            $command      = (new $command)->getName();
+            $command = (new $command)->getName();
         }
         if (!isset($callingClass) && empty($parameters)) {
             $command = $this->getCommandName($input = new StringInput($command));
