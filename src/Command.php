@@ -97,7 +97,7 @@ abstract class Command extends SymfonyCommand
     /**
      * @return string
      */
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -113,7 +113,7 @@ abstract class Command extends SymfonyCommand
     /**
      * @return string
      */
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -121,13 +121,13 @@ abstract class Command extends SymfonyCommand
     /**
      * @return string
      */
-    public function getHelp():string
+    public function getHelp(): string
     {
         return $this->help;
     }
 
     /**
-     * @param InputInterface  $input
+     * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
      * @throws \Exception
@@ -141,7 +141,7 @@ abstract class Command extends SymfonyCommand
 
 
     /**
-     * @param InputInterface  $input
+     * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
      */
@@ -165,13 +165,13 @@ abstract class Command extends SymfonyCommand
 
     /**
      * @param callable $callbacks
-     * @param int      $flags
+     * @param int $flags
      * @return bool
      */
     protected function swooleRunTime($callbacks, $flags = SWOOLE_HOOK_ALL)
     {
         Runtime::enableCoroutine($flags);
-        $s       = new Coroutine\Scheduler();
+        $s = new Coroutine\Scheduler();
         $options = Coroutine::getOptions();
         if (!isset($options['hook_flags'])) {
             $s->set(['hook_flags' => SWOOLE_HOOK_ALL]);
@@ -197,5 +197,4 @@ abstract class Command extends SymfonyCommand
         }
         return $command;
     }
-
 }
