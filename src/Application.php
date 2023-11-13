@@ -38,7 +38,7 @@ class Application extends SymfonyApplication
     {
         parent::__construct('Console Cli', $version);
         $this->setAutoExit(false);
-        $this->setCatchExceptions(false);
+        $this->setCatchExceptions(true);
         $this->bootstrap();
     }
 

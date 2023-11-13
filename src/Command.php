@@ -16,6 +16,10 @@ abstract class Command extends SymfonyCommand
 {
     use HasParameters, InteractsWithIO, CallsCommands;
 
+    // see https://tldp.org/LDP/abs/html/exitcodes.html
+    public const SUCCESS = 0;
+    public const FAILURE = 1;
+    public const INVALID = 2;
     /**
      * The console command name.
      * @var string
@@ -78,7 +82,7 @@ abstract class Command extends SymfonyCommand
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     abstract protected function handle();
 
@@ -149,12 +153,12 @@ abstract class Command extends SymfonyCommand
     {
         $callback = function () {
             try {
-                $this->handle();
+                $this->exitCode = $this->handle();
             } catch (\Throwable $exception) {
                 $this->exitCode = $exception->getCode();
                 throw $exception;
             }
-            return 0;
+            return $this->exitCode;
         };
         if ($this->coroutine) {
             $this->swooleRunTime($callback);
