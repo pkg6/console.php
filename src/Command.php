@@ -16,6 +16,10 @@ abstract class Command extends SymfonyCommand
 {
     use HasParameters, InteractsWithIO, CallsCommands;
 
+    // see https://tldp.org/LDP/abs/html/exitcodes.html
+    public const SUCCESS = 0;
+    public const FAILURE = 1;
+    public const INVALID = 2;
     /**
      * The console command name.
      * @var string
@@ -78,7 +82,7 @@ abstract class Command extends SymfonyCommand
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     abstract protected function handle();
 
@@ -97,7 +101,7 @@ abstract class Command extends SymfonyCommand
     /**
      * @return string
      */
-    public function getName() :string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -127,13 +131,13 @@ abstract class Command extends SymfonyCommand
     }
 
     /**
-     * @param InputInterface  $input
+     * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
      * @throws \Exception
      * @throws ExceptionInterface
      */
-    public function run(InputInterface $input, OutputInterface $output) :int
+    public function run(InputInterface $input, OutputInterface $output): int
     {
         $this->output = new SymfonyStyle($input, $output);
         return parent::run($this->input = $input, $this->output);
@@ -141,7 +145,7 @@ abstract class Command extends SymfonyCommand
 
 
     /**
-     * @param InputInterface  $input
+     * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
      */
@@ -149,12 +153,12 @@ abstract class Command extends SymfonyCommand
     {
         $callback = function () {
             try {
-                $this->handle();
+                $this->exitCode = $this->handle();
             } catch (\Throwable $exception) {
                 $this->exitCode = $exception->getCode();
                 throw $exception;
             }
-            return 0;
+            return $this->exitCode;
         };
         if ($this->coroutine) {
             $this->swooleRunTime($callback);
@@ -165,13 +169,13 @@ abstract class Command extends SymfonyCommand
 
     /**
      * @param callable $callbacks
-     * @param int      $flags
+     * @param int $flags
      * @return bool
      */
     protected function swooleRunTime($callbacks, $flags = SWOOLE_HOOK_ALL)
     {
         Runtime::enableCoroutine($flags);
-        $s       = new Coroutine\Scheduler();
+        $s = new Coroutine\Scheduler();
         $options = Coroutine::getOptions();
         if (!isset($options['hook_flags'])) {
             $s->set(['hook_flags' => SWOOLE_HOOK_ALL]);
