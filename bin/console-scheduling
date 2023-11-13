@@ -21,16 +21,20 @@ foreach ($autoloadFile as $file) {
 if (!file_exists($file)) {
     die("include composer autoload.php fail\n");
 }
-const BASE_PATH = __DIR__;
 
-$console          = new ScheduleConsole();
+const BASE_PATH = __DIR__;
+const CONSOLE_NAME = __FILE__;
+
+$console = new ScheduleConsole();
 $appConsoleClass = [
     \App\ConsoleScheduling::class,
 ];
+
 foreach ($appConsoleClass as $app) {
     if (is_subclass_of($app, ScheduleConsole::class)) {
         $console = new $app;
         break;
     }
 }
+
 $console->handle();

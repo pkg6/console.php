@@ -26,7 +26,7 @@
     "swoole/ide-helper": "^4.5"
   },
   "bin": [
-    "bin/consoles-scheduling"
+    "bin/console-scheduling"
   ],
   "scripts": {
     "fresh": [
