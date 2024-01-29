@@ -12,15 +12,6 @@ composer require pkg6/console
 
 0.0.x Basic version
 
-0.x.x The first x represents one functional module and one version
-
-1.x.x Aggregated all functions
-
-> 0.0.x 表示basic分支的内容
->
-> 0.x.x 包含basic和独立功能的分支内容
->
-> 1.x.x 包含所有分支内容
 
 # Development Process
 
